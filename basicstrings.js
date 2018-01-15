@@ -28,3 +28,10 @@ console.log('The second last character of ' + str + ' is ' + secondlastchar);
 str[0] = 'A';
 console.log(str); // it still says 'I' like cats. Ignores the attempted assignment of 'A' to the first character.
 
+// Little MadLib function.
+function wordBlanks(myNoun, myAdjective, myVerb, myAdverb) {
+    let result = 'My ' + myAdjective + ' ' + myNoun + ' was ' + myVerb + ' ' + myAdverb;
+    return result;
+}
+console.log(wordBlanks("cat", "fat", "purred", "pleasantly"));
+
