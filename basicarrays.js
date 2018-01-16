@@ -46,7 +46,7 @@ let gecko = myArray1.pop();
 console.log(gecko); // says 'Cactus'.
 
 
-// Take the FIRST item off the end an array with shift(). We can store it in a variable. 
+// Take the FIRST item off the START an array with shift(). We can store it in a variable. 
 // PHP compare: array_shift(), which can also be assigned to a variable.
 /*
 PHP:
