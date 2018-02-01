@@ -24,3 +24,18 @@ setTimeout(() => {
     console.log("ES6 anonymous callback function happened this time");
 }, 9000);
 
+/*
+A good application for callback functions is EVENT LISTENERS. We do not want anything
+to happen until the event, such as a user click, occurs!
+When even the event occurs it calls back the function.
+*/
+
+/* Notice that the below happens FIRST! Before the above functions! 
+Callbacks allow asynchronous callbacks! (we don't have to wait for one to etech in order before something else is started)
+*/
+let theButt = document.querySelector('#mybutton');
+theButt.addEventListener('click', (e) => { 
+    alert('yay u! You clicked theButt!') // yes...I know...
+    setTimeout(LogCall, 3000); // happens 3 secotechs after clicking the button. So may end up anywhere between the function calls above.
+});
+
