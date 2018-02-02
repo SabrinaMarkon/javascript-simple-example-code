@@ -1,4 +1,4 @@
-/* Simple closure example: */
+/* Simple closure examples */
 var f1 = function f1() {
     var a = 2;
     var b = 3;
@@ -85,13 +85,62 @@ OR
 ===================================================
 */
 
+/* EXAMPLE showing how a JS CLOSURE makes it possible for JS to have private variables.
+-The function below, called 'module' is assigned to a variable called 'runMe'. The difference with this function is that it returns an object with several properties.
+-When the page loads, the module function assigned to runMe executes immediately and finishes, but the runMe variable still has access to the scope of the module.
+-So while nothing else can access the variables from module, as it is already finished, we can still write runMe.obj where obj is a function or variable that was declared in the scope of the original module function!
+-Thus, the ONLY way to use those internal functions from module is to use the runMe.obj commands. (encapsulation).
 
+Ex:
+*/
 
+var runMe = (function module() {
 
+    var a = 3;
 
+    var printIt = function printIt(num) {
+        console.log(num);
+    }
 
+    var addUp = function addUp(b) {
+        printIt(a + b);
+    }
 
+    var multiplyThem = function multiplyThem(b) {
+        printIt(a * b);
+    }
 
+    /*
+    By executing runMe, we can use any of the three properties below as functions that we can pass a value to and receive a result even though the module function completed already when the page loaded!
+    */
+    return {
+        addUp: addUp,
+        multiplyThem: multiplyThem,
+        printIt: printIt
+    }
+
+}());
+
+/* In the console, for instance, type:
+runMe.addUp(4)
+an we  get 7.
+
+runMe.multiplyThem(2)
+gives 6, so we have access through runMe to not only those functions, but also the variable 'a', which is AWESOME!!!
+
+>runMe.printIt('durr')
+>durr
+
+>runMe.printIt('hurr durr')
+>hurr durr
+
+>runMe.printIt(1 + 16)
+>17
+
+---->>>> Just marvelously lovely! <<<<----
+
+A lot of this was studied with the help of 
+(All Things JavaScript, LLC, 2016
 
 /* PHP: In PHP, a closure is a LAMBDA function,  and a LAMBDA function is an anonymous function that is stored in a variable and passed as an argument to other functions or methods. 
 I find it nice to notice parallels between languages - helps me to remember things for both :) 
