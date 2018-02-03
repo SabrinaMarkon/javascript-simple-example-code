@@ -19,10 +19,10 @@ $queue = queue(['I ', 'Like '], 'Cats');
 echo $queue;
 */
 
+// ==============================================
 // let vs const:
 
-// const c; // assigned to undefined, so below line fails:
-// c = 'hi';
+//const c; // "Uncaught SyntaxError: Missing initializer in const declaration". In older browsers, it would instead automatically set c to 'undefined'
 
 const arr = [1, 2];
 arr.push(3); // allowed to modify.
@@ -33,3 +33,19 @@ console.log(arr);
 // let "lets" you reassign values to variables, unlike const:
 let l = 12;
 l = 3; // ok.
+
+//================================================
+// null vs undefined:
+
+/* both represent an empty value.
+When we declare a variable but don't assign a value yet, a placeholder is automatically assigned as 'undefined'.
+In addition, function parameters that are not given a value (or a default value) are set to 'undefined'.
+Functions also return 'undefined' if they have no return value.
+
+typeof(undefined) => undefined.
+but:
+typeof(null) => object
+
+When we want to empty a variable ourselves, we assign 'null'. We can also assign 'undefined' but should not.
+*/
+
