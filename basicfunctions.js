@@ -19,3 +19,17 @@ $queue = queue(['I ', 'Like '], 'Cats');
 echo $queue;
 */
 
+// let vs const:
+
+// const c; // assigned to undefined, so below line fails:
+// c = 'hi';
+
+const arr = [1, 2];
+arr.push(3); // allowed to modify.
+arr[0] = 5; // also allowed to modify.
+//arr = [7, 8, 9]; // NOT allowed to reassign. We can only  modify the object (array in this case).
+console.log(arr);
+
+// let "lets" you reassign values to variables, unlike const:
+let l = 12;
+l = 3; // ok.

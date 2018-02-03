@@ -18,7 +18,9 @@ funct1();
 
 /*
 With 'var':
-the console says that x is simply 'undefined': x exists because it is referenced in funct1, but it is not assigned a value yet because var x = 10 occurs AFTER the call to funct1.  It does NOT give an error as it will with 'let', which means that with 'var' it was HOISTED to the TOP OF THE CODE.
+the console says that x is simply 'undefined': x exists because it is referenced in funct1, but it is not assigned a value yet because var x = 10 occurs AFTER the call to funct1. 
+The DEFINITION of x ONLY gets hoisted, but NOT the VALUE (10).
+It does NOT give an error as it will with 'let', which means that with 'var' it was HOISTED to the TOP OF THE CODE or top of the function it is declared in. var has FUNCTION SCOPE whereas let has BLOCK SCOPE.
 */
 var x = 10;  
 

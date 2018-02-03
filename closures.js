@@ -1,4 +1,4 @@
-/* Simple closure examples */
+/* Simple closure examples. Closures are a joy I love them! :) */
 var f1 = function f1() {
     var a = 2;
     var b = 3;
@@ -145,3 +145,5 @@ A lot of this was studied with the help of
 /* PHP: In PHP, a closure is a LAMBDA function,  and a LAMBDA function is an anonymous function that is stored in a variable and passed as an argument to other functions or methods. 
 I find it nice to notice parallels between languages - helps me to remember things for both :) 
 */
+
+
