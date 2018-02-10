@@ -46,6 +46,7 @@ iSwearToCleanTheCatLitter.then(function(fromResolve) {
 /*
 Here, you have to finish something, before you start another thing 
 Promises are much cleaner code than a nested chain of callback function pyramid of nightmares.
+Promises also allow us to have a stack, throw, and return, whereas callbacks do not.
 */
 
 // 1) do first. Read the textbook lesson.
@@ -93,6 +94,7 @@ readTextbook().then(function(result) {
     console.log(result);
 });
 
+
 /* =================== FANCY EXAMPLE 2: All At Once ====================*/
 /*
 What if, instead of the above where one promise runs after the other, we want them all to spawn
@@ -104,6 +106,7 @@ Promise.all([readTextbook(), writeAssignment(), gradePeers(), writeExam()]).then
     console.log('All finished at once!');
 });
 
+
 /* =================== FANCY EXAMPLE 3: Want Just One to Finish ====================*/
 /*
 What if, however, we only need ONE to finish (any one) in order to start doing something?
@@ -113,3 +116,38 @@ Promise.race([readTextbook(), writeAssignment(), gradePeers(), writeExam()]).the
     console.log('One promise finished!'); // but which one?
 });
 
+
+/* =================== BUGGINESS WITH JS Promise.race() ====================*/
+// FIRST: a race:
+let sportscar = new Promise(resolve => setTimeout(resolve, 2000, 'Sports car wins!'));
+let garbagetruck = new Promise(resolve => setTimeout(resolve, 1000, 'Garbage truck wins!'));
+let impacthammer = new Promise(resolve => setTimeout(resolve, 3000, 'Impact hammer wins!'));
+let skateboard = new Promise(resolve => setTimeout(resolve, 5000, 'Skateboard wins!'));
+let scooter = new Promise(resolve => setTimeout(resolve, 3500, 'Scooter wins!'));
+let shoppingcart = new Promise(resolve => setTimeout(resolve, 900, 'Shopping cart wins!'));
+Promise.race([sportscar, garbagetruck, impacthammer, skateboard, scooter, shoppingcart]).then(
+    val => console.log('Race completed! ' + val + ' Yay!!!')
+).catch(
+    err => console.log('Race ended because ', err)
+);
+
+/*
+That was fun, but what if something crashes, and the other racers have to go on without it?
+See how the shoppingcart racer says 'reject'?
+*/
+let sportscar2 = new Promise(resolve => setTimeout(resolve, 2000, 'Sports car wins!'));
+let garbagetruck2 = new Promise(resolve => setTimeout(resolve, 1000, 'Garbage truck wins!'));
+let impacthammer2 = new Promise(resolve => setTimeout(resolve, 3000, 'Impact hammer wins!'));
+let skateboard2 = new Promise(resolve => setTimeout(resolve, 5000, 'Skateboard wins!'));
+let scooter2 = new Promise(resolve => setTimeout(resolve, 3500, 'Scooter wins!'));
+let shoppingcart2 = new Promise((resolve, reject) => setTimeout(reject, 900, 'Shopping cart had a funny wheel and crashed!'));
+Promise.race([sportscar2, garbagetruck2, impacthammer2, skateboard2, scooter2, shoppingcart2]).then(
+    val => console.log('Race completed! ' + val + ' Yay!!!')
+).catch(
+    err => console.log('Race ended because ', err)
+);
+/*
+It stops the entire race (no more promises!) with:
+"Race ended because  Shopping cart had a funny wheel and crashed!"
+The rest of the promises (racers), however, should go on without the rejected (crashed) one! Shouldn't they?
+*/
