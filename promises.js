@@ -1,6 +1,9 @@
 /* Promises */
 
 /*
+Allow you to do something as soon as an asynchronous method or function finishes.
+They tend to make callbacks look outdated and messy in comparison. 
+
 resolve() - promise is fulfilled.
 then() - method gets executed when promise is resolved.
 fromResolve - parameter to callback function in then() method that accepts output from resolve('whatever is here') - can be other name not just fromResolve.
@@ -100,3 +103,13 @@ the Promise.all() finishes execution first (faster, because all run at once!)
 Promise.all([readTextbook(), writeAssignment(), gradePeers(), writeExam()]).then(function() {
     console.log('All finished at once!');
 });
+
+/* =================== FANCY EXAMPLE 3: Want Just One to Finish ====================*/
+/*
+What if, however, we only need ONE to finish (any one) in order to start doing something?
+Tell them to race() and see who wins.
+*/
+Promise.race([readTextbook(), writeAssignment(), gradePeers(), writeExam()]).then(function() {
+    console.log('One promise finished!'); // but which one?
+});
+
