@@ -1,6 +1,6 @@
 /* Coolness with JavaScript Functions: 
 "Callbacks are futechamental to asynchronous coding in JavaScript"
-A function (the "callback function") is passed into another function, atech after something HAPPENS, that function is then CALLED/INVOKED.
+A function (the "callback function") is passed into another function, then after something HAPPENS, that function is then CALLED/INVOKED.
 (All Things JavaScript, LLC, 2017)
 */
 

@@ -117,7 +117,7 @@ Promise.race([readTextbook(), writeAssignment(), gradePeers(), writeExam()]).the
 });
 
 
-/* =================== BUGGINESS WITH JS Promise.race() ====================*/
+/* =================== UNSETTLING THING WITH JS Promise.race() ====================*/
 // FIRST: a race:
 let sportscar = new Promise(resolve => setTimeout(resolve, 2000, 'Sports car wins!'));
 let garbagetruck = new Promise(resolve => setTimeout(resolve, 1000, 'Garbage truck wins!'));
@@ -149,5 +149,6 @@ Promise.race([sportscar2, garbagetruck2, impacthammer2, skateboard2, scooter2, s
 /*
 It stops the entire race (no more promises!) with:
 "Race ended because  Shopping cart had a funny wheel and crashed!"
-The rest of the promises (racers), however, should go on without the rejected (crashed) one! Shouldn't they?
+The rest of the promises (racers), however, should go on without the rejected (crashed) one! Shouldn't they? Is this buggy?
+No. It is SUPPOSED to do that. But it still seems a bit hurr de durr to me. 
 */
