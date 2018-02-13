@@ -92,7 +92,7 @@ readTextbook().then(function(result) {
 }).then(function(result) {
     //console.log('All done!');
     console.log(result);
-});
+}).catch(console.log.bind(console)); // <-- this is badass. DON'T FORGET CATCH STATEMENTS or errors will disappear into the void...
 
 
 /* =================== FANCY EXAMPLE 2: All At Once ====================*/
