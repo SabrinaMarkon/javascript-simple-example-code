@@ -72,3 +72,20 @@ let obj4 = {
 Object.setPrototypeOf(obj4, ourProto);
 obj4.namecat();
 // obj4 linked to prototype function namecat.
+
+
+// More Practice:
+
+// function:
+let pokemon = function(type) {
+    this.type = type;
+}
+// set prototype:
+pokemon.prototype.getTypePrototype = function() {
+    return this.type;
+}
+// use the prototype:
+let magcargo = new pokemon('Fire');
+console.log("Magcargo is a " + magcargo.getTypePrototype() + " type Pokemon");
+
+
