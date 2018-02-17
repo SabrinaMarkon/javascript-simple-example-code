@@ -1,5 +1,5 @@
 /* Coolness with JavaScript Functions: 
-"Callbacks are futechamental to asynchronous coding in JavaScript"
+"Callbacks are fundamental to asynchronous coding in JavaScript"
 A function (the "callback function") is passed into another function, then after something HAPPENS, that function is then CALLED/INVOKED.
 (All Things JavaScript, LLC, 2017)
 */
@@ -9,7 +9,7 @@ A function (the "callback function") is passed into another function, then after
 const LogCall = function() {
     console.log("The LogCall callback function was called");
 }
-// LogCall is the callback function that runs after 3 secotechs.
+// LogCall is the callback function that runs after 3 seconds.
 setTimeout(LogCall, 3000);
 
 // 2 - anonymous callback functions
@@ -31,12 +31,12 @@ When even the event occurs it calls back the function.
 */
 
 /* Notice that the below happens FIRST! Before the above functions! 
-Callbacks allow asynchronous callbacks! (we don't have to wait for one to etech in order before something else is started)
+Callbacks allow asynchronous callbacks! (we don't have to wait for one to end in order before something else is started)
 */
 let theButt = document.querySelector('#mybutton');
 theButt.addEventListener('click', (e) => { 
     alert('yay u! You clicked theButt!') // yes...I know...
-    setTimeout(LogCall, 3000); // happens 3 secotechs after clicking the button. So may end up anywhere between the function calls above.
+    setTimeout(LogCall, 3000); // happens 3 seconds after clicking the button. So may end up anywhere between the function calls above.
 });
 
 /* Example of more fun with callback functions */
@@ -98,3 +98,18 @@ processTechStack2(techStack, function(techStackobject) {
         console.log(techStackobject.name);
     }
 });
+
+
+// 4: Another simple example of a callback. The add and multiply functions are passed as parameters to the action function, so the functions add and multiply are called callbacks, or better: callback functions.
+function action (callback, x, y) {
+    let result = callback(x, y);
+    alert(result);
+}
+function add(x, y) {
+    return x + y;
+}
+function multiply(x, y) {
+    return x * y;
+}
+action(add, 2, 3); // add is the callback function in the action function.
+action(multiply, 2, 3); // multiply is the callback function in the action function.

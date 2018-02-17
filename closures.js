@@ -1,4 +1,26 @@
 /* Simple closure examples. Closures are a joy I love them! :) */
+
+/* WHAT IS A CLOSURE AND HOW DO WE USE THEM? 
+When a function returns another function, the returning function would hold its environment: basically all the variables it needed.
+*/
+let obj = function() { // inside is the environment for this function.
+    let i = 0;
+    return { // returns an object with two functions, but it would return and still hold the variable i even though that is done executing.
+        setI(k) {
+            i = k;
+        },
+        getI() {
+            return i;
+        }
+    }
+}
+let x = obj();
+x.setI(2);
+x.setI(44);
+console.log(x.getI()); // should return 44.
+
+//// ABOVE the variable i is REMEMBERED even though the function already returned!
+
 var f1 = function f1() {
     var a = 2;
     var b = 3;
@@ -145,5 +167,4 @@ A lot of this was studied with the help of
 /* PHP: In PHP, a closure is a LAMBDA function,  and a LAMBDA function is an anonymous function that is stored in a variable and passed as an argument to other functions or methods. 
 I find it nice to notice parallels between languages - helps me to remember things for both :) 
 */
-
 
