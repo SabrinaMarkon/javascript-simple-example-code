@@ -1,4 +1,4 @@
-/* Promises II */
+/* Promises I - The Basics */
 
 /* ALWAYS return IN OUR 'then' FUNCTIONS! */
 
@@ -63,7 +63,7 @@ http2('http://phpsitescripts.com', 'GET')
     })
     .then(function(modifiedData) {
         console.log(modifiedData); // undefined.
-        return modifiedData; // Make sure at least to return the data that was received or the next 'then' won't run. This should return again the SQUEEBZ message all in capitals.
+        return modifiedData; // Make sure at least to return the data that was received or the next 'then' won't run. If this return is not here, the next 'then' will not work. This should return again the SQUEEBZ message all in capitals.
     })
     .then(function(data) {
         console.log(data);
