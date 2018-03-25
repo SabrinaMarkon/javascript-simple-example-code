@@ -16,11 +16,11 @@ catch() - method that is executed when promise fails.
 fromReject - parameter to callback function in catch() method that accepts output from reject - can be other name not just fromReject. 
 */
 
-/* */
+/* pulling in request package */
 var request = require('request');
 
 function http(url, method) {
-    method = method.toLowerCase();
+    method = method.toLowerCase(); // methods on 'request' are lowercase.
     var options = {
         url: url,
         headers: {
@@ -29,13 +29,19 @@ function http(url, method) {
     };
 
     return new Promise(function(resolve, reject) {
-        request [method] (options, funciton(err, response, body) {
+        request [method] (options, function(err, response, body) {
             if (err) {
                 reject(err);
             }
             if (body) {
-                resolve(JSON.parse(body));
+                resolve(JSON.parse(body)); // parse body because it comes back stringified.
             }
         });
     });
 }
+
+/* call: */
+http('https://api.github.com/users?since=1364725', 'GET')
+    .then(function(users) {
+        console.log(users);
+    });
