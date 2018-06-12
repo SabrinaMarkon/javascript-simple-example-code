@@ -1,5 +1,8 @@
 /* Promises I - The Basics */
 
+/* Instead of using callbacks, where we have to include our own success and error functions outside the code block,
+with promises we can just use the Promise built-in resolve and reject functions. */
+
 /* ALWAYS return IN OUR 'then' FUNCTIONS! */
 
 /*
@@ -40,7 +43,7 @@ http('http://sabrinamarkon.com', 'GET', function(data) {
 */
 function http2(url, method) {
     var promise = new Promise(function(resolve, reject) {
-        //throw new Error('error in promise!'); // this would end up in the 'catch' function!
+        //throw new Error('error in promise!'); // this would end up in the 'catch' function always!
         setTimeout(function() {
             let data = "Hi my name is Squeebz!";
             if (data) {
@@ -50,10 +53,13 @@ function http2(url, method) {
             }
         }, 1000);
     });
-    return promise;a
+    return promise;
 }
 /* 
--Promises have built in methods for handling success and error scenarios, 'then' and 'catch'. Same as above http() call but use promises then and catch.
+-Promises have built in methods for handling success and error scenarios, 'then' and 'catch', so again, we do not need
+to make extra functions that are callbacks for each of success or failure. */
+
+/* Same as above http() call but use promises then and catch. 
 -As long as we have our 'catch' function, our promise is protected from uncaught exceptions.
 -Promises also let us use 'return' in the code, whereas callbacks do not.
 */
@@ -72,3 +78,11 @@ http2('http://phpsitescripts.com', 'GET')
     .catch(function(err) {
         console.log('Catch:', err);
     });
+
+
+    /* 
+    REMEMBER:
+    Callbacks - "call back" the success and failure functions that are in the parameters
+    Promises - do not need the two extra functions (success/failure ones we make), because
+    reject and resolve are included in Promise already!
+    */

@@ -1,4 +1,4 @@
-/* Promises III - Promise.al */
+/* Promises III - Promise.all */
 
 /* Usually, instead of running our async operations one at a time (see promises-2 file), we want to run some at once. We can use Promise.all for this. */
 
