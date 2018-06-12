@@ -52,6 +52,6 @@ All promises in the array will go through their own resolve/reject process thoug
 
 If the FIRST (race winner) rejects, however, then Promise.race will reject and say 'this is the error' from its catch() method.
 
-
+Good if we want to wait for the first promise to resolve, but not reject unless ALL promises reject ie. "Promise.any" from some promise libraries like Bluebird and Queue.
 
 */
