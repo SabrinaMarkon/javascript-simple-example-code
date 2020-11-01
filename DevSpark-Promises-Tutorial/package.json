@@ -5,6 +5,7 @@
   "main": "promises-1-thebasics.js",
   "dependencies": {
     "axios": "^0.18.1",
+    "cryptiles": "^4.1.3",
     "request": "^2.85.0"
   },
   "devDependencies": {},
